@@ -1,0 +1,26 @@
+<h2>Comparison: explicit rules versus learned angle features</h2>
+<p><strong>Pose Trainer</strong> applies geometric rules to recorded upper-body exercises. <strong>Real-Time Feedback and Benchmark Dataset for Isometric Pose Evaluation</strong> summarizes joint angles and trains classifiers for six held poses. Both make posture measurable, but they turn those measurements into decisions differently. <a href="references.html#ref-3">[3]</a> <a href="references.html#ref-2">[2]</a></p>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Pose Trainer</th><th>Isometric pose study</th></tr></thead><tbody>
+<tr><th>How is an error decided?</th><td>Exercise-specific geometric thresholds.</td><td>Angle-histogram features classified by a learned model, including an MLP.</td></tr>
+<tr><th>What is the advantage?</th><td>A detected deviation maps directly to a rule and warning.</td><td>Classification boundaries can be learned from labeled examples.</td></tr>
+<tr><th>What constrains it?</th><td>Hand-chosen rules, viewpoint, and pose noise.</td><td>The training labels, restricted frontal view, and small participant pool.</td></tr>
+</tbody></table></div>
+<h2>One algorithm, explained</h2>
+<p>The isometric study first finds repetition/hold segments from a landmark-coordinate signal. Peaks must exceed a published prominence of 0.2, with neighboring local minima defining boundaries. Within a segment, it bins each selected joint angle and keeps the center of the most frequent bin. The resulting feature vector goes to a classifier. <a href="references.html#ref-2">[2, §4–4.1]</a></p>
+<pre><code># Simplified outline of the published isometric method
+for peak in landmark_signal_peaks:
+    if prominence(peak) &gt; 0.2:
+        segment = frames_between_neighboring_minima(peak)
+        features = []
+        for joint_angle in selected_angles(segment):
+            bins = histogram(joint_angle)  # directed angles: 0–360°
+            features.append(center_of_most_frequent_bin(bins))
+        predicted_error = trained_classifier(features)</code></pre>
+<p>The 0.2 value depends on the coordinate scaling. Reproducing this method requires specifying the pose output, selected signal and angles, histogram bins, and training procedure. The outline is not runnable application code.</p>
+<figure><img src="images/histogram.svg" alt="A histogram reduces many angle observations to the most frequent bin."><figcaption>Diagram by Brent Paterson. Illustrative counts explain the feature extraction in <a href="references.html#ref-2">[2, §4.1]</a>.</figcaption></figure>
+<h2>What succeeded?</h2>
+<p>In the isometric study, angle-model weighted F1 ranges from .796 to .952 across poses. It exceeds the tested graph model for Cobra, Triangle, Warrior-2, and Plank, while the graph model scores higher for Tree and Superman. A simple representation was competitive within that experiment; a more complicated model was not consistently better. <a href="references.html#ref-2">[2, Table 3]</a></p>
+<p>Pose Trainer makes individual rules easy to explain. For bicep curls, it uses a 35° upper-arm/torso threshold and checks whether the elbow angle reaches below 70°. These rules illustrate traceable corrections, not universal exercise standards. <a href="references.html#ref-3">[3, §4.6]</a></p>
+<h2>What falls short?</h2>
+<p>A histogram preserves common angles but discards their order. That can suit a stable hold, but cannot fully describe when a fault occurred during a dynamic repetition. Fixed rules also depend on the exercise and view. The isometric study's restricted, male-only cohort limits claims about other users. These are method and evaluation limits, not evidence that either approach always fails. <a href="references.html#ref-2">[2, §7]</a></p>
+<p><strong>Conclusion:</strong> Use simple angle methods as explainable baselines. Use a temporal comparison when the question depends on how the movement changes, as discussed next.</p>

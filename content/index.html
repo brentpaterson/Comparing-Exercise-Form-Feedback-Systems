@@ -1,0 +1,18 @@
+<p><strong>Brent Paterson — CS 663, Project 1</strong></p>
+<h2>Purpose of this review</h2>
+<p>This tutorial compares six published systems that evaluate exercise form and provide feedback. The question is: <strong>what worked, what fell short, and what explains the differences?</strong> The conclusions will help guide our Project 2 mobile fitness coach.</p>
+<p>The focus is on the systems built to judge movement and give corrections. Pose estimation supplies joint positions, but accurate joints alone do not establish accurate coaching. This review does not compare general pose estimators such as BlazePose and YOLO Pose.</p>
+<figure><a href="images/aifit-figure-1.png" target="_blank" rel="noopener"><img src="images/aifit-figure-1.png" alt="AIFit's published pipeline: 3D reconstruction, repetition segmentation, exercise signatures, statistical coaching, and grammatical feedback."></a><figcaption>AIFit, Figure 1: an example of a complete exercise-feedback system. Its stages make the source of a correction traceable. Source: Fieraru et al., <em>AIFit: Automatic 3D Human-Interpretable Feedback Models for Fitness Training</em>, CVPR 2021, <a href="https://ieeexplore.ieee.org/document/9577349">IEEE paper</a> <a href="references.html#ref-4">[4]</a>. Extracted from the PDF; click to enlarge.</figcaption></figure>
+<h2>The studies</h2>
+<ul>
+<li><strong>FormCoach: Lift Smarter, Not Harder</strong> — video-based language coaching. <a href="references.html#ref-1">[1]</a></li>
+<li><strong>Real-Time Feedback and Benchmark Dataset for Isometric Pose Evaluation</strong> — angle features and classifiers for held poses. <a href="references.html#ref-2">[2]</a></li>
+<li><strong>Pose Trainer: Correcting Exercise Posture Using Pose Estimation</strong> — geometric rules and movement-sequence matching. <a href="references.html#ref-3">[3]</a></li>
+<li><strong>AIFit: Automatic 3D Human-Interpretable Feedback Models for Fitness Training</strong> — statistical comparison with an instructor. <a href="references.html#ref-4">[4]</a></li>
+<li><strong>SiTrEx: Siamese Transformer for Feedback and Posture Correction on Workout Exercises</strong> — learned similarity between coach and athlete sequences. <a href="references.html#ref-5">[5]</a></li>
+<li><strong>Real-Time Posture Correction of Squat Exercise: A Deep Learning Approach for Performance Analysis and Error Correction</strong> — temporal squat classification and corrected-pose prediction. <a href="references.html#ref-6">[6]</a></li>
+</ul>
+<h2>How the comparison is organized</h2>
+<p>We compare camera assumptions, simple versus temporal methods, reference matching, feedback reliability, and the strength of the evaluations. Each page ends with a conclusion supported by the studies on that page.</p>
+<p>A reported failure, a restricted test setup, and an unanswered question are different things. This review keeps those distinctions. Because the papers measure different tasks, the largest accuracy percentage does not identify an overall winner.</p>
+<p>Allow about 15–25 minutes to read the comparisons, work through the algorithm, inspect the diagrams, and use the three-slide activity. The bibliography provides supporting detail.</p>
