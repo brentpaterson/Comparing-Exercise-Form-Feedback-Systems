@@ -32,14 +32,14 @@ for index, (slug, label, title) in enumerate(PAGES):
     script = '<script src="slideshow.js" defer></script>' if slug == 'comparison' else ''
     document = f'''<!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title} — CS 663 Project 1</title><link rel="stylesheet" href="style.css">{script}</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title} — CS 663 Project 1</title><link rel="stylesheet" href="style.css"><script src="read-page.js" defer></script>{script}</head>
 <body>
 <header><p>CS 663 — Project 1 · Brent Paterson</p><nav aria-label="Tutorial pages">{navigation}</nav></header>
-<main id="main"><h1>{title}</h1>
+<main id="main"><div class="read-controls"><button id="read-page" type="button" aria-pressed="false">Read this page</button> <span id="read-status" role="status" aria-live="polite"></span></div><h1>{title}</h1>
 {body}</main>
 <footer><p>{' | '.join(turns)}</p><p>Comparative Analysis of Published Real-Time Exercise Form Feedback Systems</p></footer>
 </body></html>'''
     (ROOT/f'{slug}.html').write_text(document, encoding='utf-8')
 
 (ROOT/'.nojekyll').write_text('',encoding='utf-8')
-print('Generated eight comparison-focused pages. No audio or quiz.')
+print('Generated eight comparison-focused pages with read-aloud buttons.')

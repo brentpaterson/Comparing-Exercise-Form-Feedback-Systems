@@ -1,6 +1,8 @@
 # Project 1 tutorial — simple version
 
-Open `index.html` to view the tutorial. This version has plain styling, eight short pages, direct comparisons between six studies, diagrams, and a three-slide activity. There is no quiz or narration.
+Open `index.html` to view the tutorial. This version has plain styling, eight short pages, direct comparisons between six studies, diagrams, and a three-slide activity. There is no quiz. Each page has a browser-based computer-voice reading button.
+
+Click **Read this page** at the top to hear its main text; the same button changes to **Stop reading**. Navigation, code blocks, and hidden slideshow slides are skipped. The voice is supplied by the visitor's browser/device; there are no recorded audio files. Speech stops when leaving the page.
 
 The slideshow is included because the assignment requires an interactive activity and explicitly allows a slideshow you create.
 
@@ -32,7 +34,7 @@ The detailed results remain cited, but the presentation can explain the comparis
 
 Still to do for submission:
 
-- Add your recorded narration to each page.
+- Test the computer-voice reading controls in your browser. This is synthesized page narration, distinct from your spoken presentation recording.
 - Rehearse `Project 1 Presentation.pptx` and `Project 1 Presentation Script.md` in the parent folder, then record the required YouTube presentation using both the slides and website.
 - Review the live site after any further edits.
 

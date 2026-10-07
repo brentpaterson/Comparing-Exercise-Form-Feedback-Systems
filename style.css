@@ -36,6 +36,8 @@ dl dd { margin-left: 0; }
 article { border-top: 1px solid #bbb; padding: 15px 0; margin-top: 20px; }
 button { padding: 6px 12px; font-size: 14px; cursor: pointer; }
 button:disabled { cursor: default; }
+.read-controls { margin: 18px 0; }
+#read-status { margin-left: 8px; font-size: 14px; }
 .slide-controls { margin: 16px 0; }
 #slide-status { margin: 0 12px; }
 footer { border-top: 1px solid #bbb; margin-top: 35px; padding: 12px 0; font-size: 13px; }
@@ -45,7 +47,7 @@ footer { border-top: 1px solid #bbb; margin-top: 35px; padding: 12px 0; font-siz
   h2 { font-size: 20px; }
 }
 @media print {
-  nav, .slide-controls { display: none; }
+  nav, .slide-controls, .read-controls { display: none; }
   body { max-width: none; font-size: 11pt; }
   figure, table { break-inside: avoid; }
 }
